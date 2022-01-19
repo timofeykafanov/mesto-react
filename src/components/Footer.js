@@ -3,7 +3,7 @@
 function Footer() {
     return (
         <footer className="footer">
-            <p className="footer__copyright">© 2021 Тимофей Кафанов</p>
+            <p className="footer__copyright">&copy;  2021 Тимофей Кафанов</p>
         </footer>
     )
 }

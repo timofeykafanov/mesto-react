@@ -1,41 +1,41 @@
 class Api {
-    constructor({adress, token}) {
-        this._adress = adress;
+    constructor({address, token}) {
+        this._address = address;
         this._token = token;
     }
 
+    _getResponseData(res) {
+        if (res.ok) {
+            return res.json();
+        } else {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+    } 
+
     getInitialCards() {
-        return fetch(`${this._adress}/cards`, {
+        return fetch(`${this._address}/cards`, {
             headers: {
                 authorization: this._token
             }
         })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
+        .then((res) => {
+            return this._getResponseData(res);
         })
     }
 
     getUserInfo() {
-        return fetch(`${this._adress}/users/me`, {
+        return fetch(`${this._address}/users/me`, {
             headers: {
                 authorization: this._token
             }
         })
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
+            return this._getResponseData(res);
         })
     }
 
     setUserInfo(inputValues) {
-        return fetch(`${this._adress}/users/me`, {
+        return fetch(`${this._address}/users/me`, {
             method: 'PATCH',
             headers: {
                 authorization: this._token,
@@ -47,16 +47,12 @@ class Api {
             })
         })
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
+            return this._getResponseData(res);
         })
     }
 
     setUserAvatar(inputValue) {
-        return fetch(`${this._adress}/users/me/avatar`, {
+        return fetch(`${this._address}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
                 authorization: this._token,
@@ -67,16 +63,12 @@ class Api {
             })
         })
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
+            return this._getResponseData(res);
         })
     }
 
     setCard(inputValues) {
-        return fetch(`${this._adress}/cards`, {
+        return fetch(`${this._address}/cards`, {
             method: 'POST',
             headers: {
                 authorization: this._token,
@@ -88,65 +80,49 @@ class Api {
             })
         })
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
+            return this._getResponseData(res);
         })
     }
 
     putLike(item) {
-        return fetch(`${this._adress}/cards/${item._id}/likes`, {
+        return fetch(`${this._address}/cards/${item._id}/likes`, {
             method: 'PUT',
             headers: {
                 authorization: this._token
             }
         })
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
+            return this._getResponseData(res);
         })
     }
     
     deleteLike(item) {
-        return fetch(`${this._adress}/cards/${item._id}/likes`, {
+        return fetch(`${this._address}/cards/${item._id}/likes`, {
             method: 'DELETE',
             headers: {
                 authorization: this._token
             }
         })
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
+            return this._getResponseData(res);
         })
     }
 
     deleteCard(item) {
-        return fetch(`${this._adress}/cards/${item._id}`, {
+        return fetch(`${this._address}/cards/${item._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: this._token
             }
         })
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
+            return this._getResponseData(res);
         })
     }
 }
 
 const api = new Api({
-    adress: 'https://mesto.nomoreparties.co/v1/cohort-32',
+    address: 'https://mesto.nomoreparties.co/v1/cohort-32',
     token: '62434932-64a7-4dd4-b60b-76c0e0336349'
 })
 

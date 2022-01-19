@@ -26,4 +26,5 @@
 
 .profile__avatar:hover::after {
     opacity: 0.8;
+    cursor: pointer;
 }
