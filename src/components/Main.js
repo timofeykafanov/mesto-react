@@ -1,6 +1,13 @@
+import { useContext } from "react";
+
 import Card from "./Card.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 function Main(props) {
+    const currentUser = useContext(CurrentUserContext);
+
+    console.log(currentUser)
+
     return (
         <main className="content">
         <section className="profile">
@@ -8,18 +15,18 @@ function Main(props) {
                 <div
                     className="profile__avatar"
                     onClick={props.onEditAvatar}
-                    style={{ backgroundImage: `url(${props.avatar})` }}
+                    style={{ backgroundImage: `url(${currentUser.avatar})` }}
                 ></div>
                 <div className="profile__info">
                     <div className="profile__row">
-                        <p className="profile__name">{props.name}</p>
+                        <p className="profile__name">{currentUser.name}</p>
                         <button
                             className="profile__edit-button"
                             onClick={props.onEditProfile}
                             type="button"
                         ></button>
                     </div>
-                    <p className="profile__about">{props.description}</p>
+                    <p className="profile__about">{currentUser.about}</p>
                 </div>
             </div>
                 <button

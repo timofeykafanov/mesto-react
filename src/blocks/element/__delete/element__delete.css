@@ -1,4 +1,5 @@
 .element__delete {
+    visibility: visible;
     background-color: rgba(0, 0, 0, 0);
     background-image: url(../../../images/delete.svg);
     padding: 0;
