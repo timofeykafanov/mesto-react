@@ -84,8 +84,16 @@ class Api {
         })
     }
 
-    putLike(item) {
-        return fetch(`${this._address}/cards/${item._id}/likes`, {
+    changeLikeCardStatus(id, isLiked) {
+        if (!isLiked) {
+            return this.deleteLike(id);
+        } else {
+            return this.putLike(id);
+        }
+    }
+
+    putLike(itemId) {
+        return fetch(`${this._address}/cards/${itemId}/likes`, {
             method: 'PUT',
             headers: {
                 authorization: this._token
@@ -96,8 +104,8 @@ class Api {
         })
     }
     
-    deleteLike(item) {
-        return fetch(`${this._address}/cards/${item._id}/likes`, {
+    deleteLike(itemId) {
+        return fetch(`${this._address}/cards/${itemId}/likes`, {
             method: 'DELETE',
             headers: {
                 authorization: this._token

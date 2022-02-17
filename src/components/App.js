@@ -60,6 +60,7 @@ function App() {
                 onEditAvatar={handleEditAvatarClick}
                 cards={cards}
                 onCardClick={handleCardClick}
+                setCards={setCards}
             />
 
             <Footer />
