@@ -46,12 +46,10 @@ function App() {
         api.setUserInfo(inputValues)
         .then((res) => {
             setCurrentUser(res);
+            closeAllPopups();
         })
         .catch((err) => {
             console.log(err);
-        })
-        .finally(() => {
-            closeAllPopups();
         })
     }
 
@@ -59,12 +57,10 @@ function App() {
         api.setUserAvatar(inputValue)
         .then((res) => {
             setCurrentUser(res);
+            closeAllPopups();
         })
         .catch((err) => {
             console.log(err);
-        })
-        .finally(() => {
-            closeAllPopups();
         })
     }
 
@@ -72,12 +68,10 @@ function App() {
         api.setCard(inputValues)
         .then((newCard) => {
             setCards([newCard, ...cards]);
+            closeAllPopups();
         })
         .catch((err) => {
             console.log(err);
-        })
-        .finally(() => {
-            closeAllPopups();
         })
     }
 
@@ -87,6 +81,9 @@ function App() {
         api.changeLikeCardStatus(card._id, !isLiked)
         .then((newCard) => {
             setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        })
+        .catch((err) => {
+            console.log(err);
         });
     }
 
@@ -95,6 +92,9 @@ function App() {
         .then(() => {
             setCards(cards.filter((elem) => elem !== card));
         })
+        .catch((err) => {
+            console.log(err);
+        });
     }
 
     useEffect(() => {
