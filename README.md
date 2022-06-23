@@ -3,7 +3,7 @@
 [Ссылка на проект](https://timofeykafanov.github.io/mesto-react/)
 
 ------
-
+ 
 В каталоге проекта вы можете запустить:
 
 ### `npm start`
