@@ -1,6 +1,6 @@
 # mesto-react
 
-[Ссылка на проект](https://timofeykafanov.github.io/mesto-react/)
+[Link to the project](https://timofeykafanov.github.io/mesto-react/)
 
 ------
  
